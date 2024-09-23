@@ -267,9 +267,9 @@ void main() {
 }
 ```
 
-- Hasil Output :
+Hasil Output :
 
-    <img src = img4/9.png>
+<img src = img4/9.png>
 
 ## Praktikum 4: Eksperimen Tipe Data List: Spread dan Control-flow Operators
 #### Langkah 1
@@ -536,12 +536,14 @@ void main(){
 }
 ```
 Apa yang terjadi ? Jika terjadi error, silakan perbaiki. Jelaskan manfaat Collection For dan dokumentasikan hasilnya.
-- Hasil Output :
+
+Hasil Output :
 
 <img src = img4/19.png>
 
-- Manfaat Collection For
-  **Collection For** dalam Dart memudahkan pembuatan list secara dinamis dan ringkas dengan mengiterasi elemen dari list lain. Fitur ini memungkinkan penulisan kode yang lebih sederhana dan mudah dibaca dibandingkan loop tradisional. Dengan Collection For, pengembang dapat dengan cepat menghasilkan list baru berdasarkan kondisi atau logika tertentu, sehingga mempercepat proses manipulasi data dan mengurangi risiko kesalahan. Hal ini juga meningkatkan efisiensi kode, terutama saat bekerja dengan koleksi data yang kompleks.
+**Manfaat Collection For :**
+
+Collection For dalam Dart memudahkan pembuatan list secara dinamis dan ringkas dengan mengiterasi elemen dari list lain. Fitur ini memungkinkan penulisan kode yang lebih sederhana dan mudah dibaca dibandingkan loop tradisional. Dengan Collection For, pengembang dapat dengan cepat menghasilkan list baru berdasarkan kondisi atau logika tertentu, sehingga mempercepat proses manipulasi data dan mengurangi risiko kesalahan. Hal ini juga meningkatkan efisiensi kode, terutama saat bekerja dengan koleksi data yang kompleks.
 
 ## Praktikum 5: Eksperimen Tipe Data Records
 #### Langkah 1
@@ -558,7 +560,7 @@ Silakan coba eksekusi (Run) kode pada langkah 1 tersebut. Apa yang terjadi? Jela
 
 <img src = img4/20.png>
 
-- Pada kode program tersebut memanfaatkan record untuk menyimpan beberapa nilai yang berbeda (string, integer, boolean), dan menggunakan labels untuk sebagian nilai. Ini memperlihatkan fleksibilitas record dalam menyimpan dan menampilkan kumpulan data yang ringkas dan efisien.
+Pada kode program tersebut memanfaatkan record untuk menyimpan beberapa nilai yang berbeda (string, integer, boolean), dan menggunakan labels untuk sebagian nilai. Ini memperlihatkan fleksibilitas record dalam menyimpan dan menampilkan kumpulan data yang ringkas dan efisien.
 
 #### Langkah 3
 Tambahkan kode program berikut di luar scope void main(), lalu coba eksekusi (Run) kode Anda.
@@ -574,9 +576,9 @@ void main() {
 ```
 
 Apa yang terjadi ? Jika terjadi error, silakan perbaiki. Gunakan fungsi tukar() di dalam main() sehingga tampak jelas proses pertukaran value field di dalam Records.
-- Hasil Output :
+Hasil Output :
 
-  <img src = img4/21.png>
+<img src = img4/21.png>
 
 - Mengggunakan fungsi tukar()
 ```
@@ -642,9 +644,9 @@ void main() {
   return (b, a);
 }
 ```
-- Hasil Output :
+Hasil Output :
 
-  <img src = img4/24.png>
+<img src = img4/24.png>
 
 #### Langkah 5
 Tambahkan kode program berikut di dalam scope void main(), lalu coba eksekusi (Run) kode Anda.
@@ -706,7 +708,7 @@ void main() {
 
 <img src = img4/26.png>
 
-## TUUGAS PRAKTIKUM
+## TUGAS PRAKTIKUM
 **1. Silakan selesaikan Praktikum 1 sampai 5, lalu dokumentasikan berupa screenshot hasil pekerjaan Anda beserta penjelasannya!**
 
 **2. Jelaskan yang dimaksud Functions dalam bahasa Dart!**
@@ -888,8 +890,8 @@ void main() {
 
 **7. Jelaskan dengan contoh cara membuat return multiple value di Functions!**
 
-    **Menggunakan Objek**
-    ```
+  **Menggunakan Objek**
+  ```
     class Hasil {
       final int jumlah;
       final int selisih;
@@ -905,14 +907,14 @@ void main() {
       var hasil = hitung(10, 5);
       print('Jumlah: ${hasil.jumlah}, Selisih: ${hasil.selisih}'); // Output: Jumlah: 15, Selisih: 5
     }
-    ```
-    *Penjelasan:*
-    - Kelas Hasil: Memiliki dua atribut: jumlah dan selisih, yang diinisialisasi melalui konstruktor.
-    - Fungsi hitung: Mengambil dua parameter (a dan b), kemudian mengembalikan sebuah objek Hasil dengan nilai jumlah dan selisih.
-    - Penggunaan di main: Memanggil hitung dan menyimpan hasilnya dalam variabel hasil. Kemudian kita mencetak jumlah dan selisih menggunakan atribut objek.
+  ```
+  *Penjelasan:*
+  - Kelas Hasil: Memiliki dua atribut: jumlah dan selisih, yang diinisialisasi melalui konstruktor.
+  - Fungsi hitung: Mengambil dua parameter (a dan b), kemudian mengembalikan sebuah objek Hasil dengan nilai jumlah dan selisih.
+  - Penggunaan di main: Memanggil hitung dan menyimpan hasilnya dalam variabel hasil. Kemudian kita mencetak jumlah dan selisih menggunakan atribut objek.
 
-    **Menggunakan List**
-    ```
+  **Menggunakan List**
+  ```
     List<int> hitung(int a, int b) {
       return [a + b, a - b];
     }
@@ -922,13 +924,13 @@ void main() {
       print('Jumlah: ${hasil[0]}, Selisih: ${hasil[1]}'); // Output: Jumlah: 15, Selisih: 5
     }
 
-    ```
-    *Penjelasan:*
-    - Fungsi hitung: Mengembalikan List yang berisi dua elemen: hasil penjumlahan dan pengurangan.
-    - Penggunaan di main: Memanggil fungsi hitung, lalu mencetak hasil dengan mengakses elemen-elemen List menggunakan indeks. hasil[0] untuk jumlah dan hasil[1] untuk selisih.
+  ```
+  *Penjelasan:*
+  - Fungsi hitung: Mengembalikan List yang berisi dua elemen: hasil penjumlahan dan pengurangan.
+  - Penggunaan di main: Memanggil fungsi hitung, lalu mencetak hasil dengan mengakses elemen-elemen List menggunakan indeks. hasil[0] untuk jumlah dan hasil[1] untuk selisih.
 
-    **Menggunakan Map**
-    ```
+  **Menggunakan Map**
+  ```
     Map<String, int> hitung(int a, int b) {
       return {
         'jumlah': a + b,
@@ -940,7 +942,7 @@ void main() {
       var hasil = hitung(10, 5);
       print('Jumlah: ${hasil['jumlah']}, Selisih: ${hasil['selisih']}'); // Output: Jumlah: 15, Selisih: 5
     }
-    ```
-    *Penjelasan:*
-    - Fungsi hitung: Mengembalikan Map yang memiliki dua kunci: 'jumlah' dan 'selisih', masing-masing dengan nilai hasil penjumlahan dan pengurangan.
-    - Penggunaan di main: Memanggil hitung dan mencetak hasil menggunakan kunci yang sesuai dalam Map.
+  ```
+  *Penjelasan:*
+  - Fungsi hitung: Mengembalikan Map yang memiliki dua kunci: 'jumlah' dan 'selisih', masing-masing dengan nilai hasil penjumlahan dan pengurangan.
+  - Penggunaan di main: Memanggil hitung dan mencetak hasil menggunakan kunci yang sesuai dalam Map.
