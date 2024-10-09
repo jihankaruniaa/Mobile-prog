@@ -311,3 +311,207 @@ Mengatur semua elemen dalam ListView, bukan Column.
 
 - Card
 <img src = img6\card.png>
+
+## Praktikum 5: Membangun Navigasi di Flutter
+**Langkah 1: Siapkan project baru**
+
+<img src = img6\Prak5-1.png>
+
+<br>
+
+**Langkah 2: Mendefinisikan Route**
+- HomePage
+  ```
+  import 'package:flutter/material.dart';
+
+  class HomePage extends StatelessWidget {
+    @override
+    Widget build(BuildContext context) {
+      // TODO: implement build
+      throw UnimplementedError();
+    }
+  }
+  ```
+
+- ItemPage
+  ```
+  import 'package:flutter/material.dart';
+
+  class ItemPage extends StatelessWidget {
+    @override
+    Widget build(BuildContext context) {
+      // TODO: implement build
+      throw UnimplementedError();
+    }
+  }
+  ```
+
+**Langkah 3: Lengkapi Kode di main.dart**
+```
+import 'package:flutter/material.dart';
+import 'pages/home_page.dart';
+import 'pages/item_page.dart';
+
+void main() {
+  runApp(MaterialApp(
+    title: 'Belanja App',
+    theme: ThemeData(
+      primarySwatch: Colors.blue,
+    ),
+    initialRoute: '/', // Halaman awal
+    routes: {
+      '/': (context) => HomePage(), // Route untuk HomePage
+      '/item': (context) => ItemPage(), // Route untuk ItemPage
+    },
+  ));
+}
+```
+
+**Langkah 4: Membuat data model**
+```
+class Item {
+  String name;
+  int price;
+
+  Item({required this.name, required this.price});
+}
+```
+
+**Langkah 5: Lengkapi kode di class HomePage**
+```
+import 'package:belanja/models/item.dart';
+import 'package:flutter/material.dart';
+
+class HomePage extends StatelessWidget {
+    final List<Item> items = [
+    Item(name: 'Gula', price: 13000),
+    Item(name: 'Tepung Terigu', price: 8000),
+    Item(name: 'Garam', price: 4000),
+    Item(name: 'Kentang', price: 16000),
+    Item(name: 'Tomat', price: 12000),
+    Item(name: 'Daging Sapi', price: 134000),
+    Item(name: 'Beras', price: 57000),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home'),
+      ),
+      body: ListView.builder(
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(items[index].name),
+            subtitle: Text('Harga: ${items[index].price}'),
+            onTap: () {
+              Navigator.pushNamed(context, '/item',
+                  arguments: items[index]); // Kirim data ke ItemPage
+            },
+          );
+        },
+      ),
+    );
+  }
+}
+```
+
+**Langkah 6: Membuat ListView dan itemBuilder**
+```
+import 'package:belanja/models/item.dart';
+import 'package:flutter/material.dart';
+
+class HomePage extends StatelessWidget {
+    final List<Item> items = [
+    Item(name: 'Gula', price: 13000),
+    Item(name: 'Tepung Terigu', price: 8000),
+    Item(name: 'Garam', price: 4000),
+    Item(name: 'Kentang', price: 16000),
+    Item(name: 'Tomat', price: 12000),
+    Item(name: 'Daging Sapi', price: 134000),
+    Item(name: 'Beras', price: 57000),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home'),
+      ),
+      body: ListView.builder(
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          // Menggunakan Card untuk menampilkan data item
+          return Card(
+            margin: EdgeInsets.all(8.0),
+            elevation: 4,
+            child: ListTile(
+              title: Text(items[index].name),
+              subtitle: Text('Harga: ${items[index].price}'),
+              onTap: () {
+                // Navigasi ke ItemPage dengan mengirim data item
+                Navigator.pushNamed(context, '/item',
+                    arguments: items[index]);
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+```
+
+<img src = img6\Prak5-2.png>
+
+<br>
+
+**Langkah 7: Menambahkan aksi pada ListView**
+```
+import 'package:belanja/models/item.dart';
+import 'package:flutter/material.dart';
+
+class HomePage extends StatelessWidget {
+    final List<Item> items = [
+    Item(name: 'Gula', price: 13000),
+    Item(name: 'Tepung Terigu', price: 8000),
+    Item(name: 'Garam', price: 4000),
+    Item(name: 'Kentang', price: 16000),
+    Item(name: 'Tomat', price: 12000),
+    Item(name: 'Daging Sapi', price: 134000),
+    Item(name: 'Beras', price: 57000),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home'),
+      ),
+      body: ListView.builder(
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          return InkWell(
+            onTap: () {
+              // Navigasi ke ItemPage dengan mengirim data item
+              Navigator.pushNamed(context, '/item', arguments: items[index]);
+            },
+            child: Card(
+              margin: EdgeInsets.all(8.0), // Margin antar card
+              elevation: 4, // Efek bayangan
+              child: ListTile(
+                title: Text(items[index].name),
+                subtitle: Text('Harga: ${items[index].price}'),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+```
+
+<img src = img6\Prak5-3.png> 
+<img src = img6\Prak5-4.png>
