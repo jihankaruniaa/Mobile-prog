@@ -515,3 +515,450 @@ class HomePage extends StatelessWidget {
 
 <img src = img6\Prak5-3.png> 
 <img src = img6\Prak5-4.png>
+
+## Tugas Praktikum 2
+1. Untuk melakukan pengiriman data ke halaman berikutnya, cukup menambahkan informasi arguments pada penggunaan Navigator.
+
+    <img src = img6\TP2-1.png>
+
+  <br>
+
+2. Pembacaan nilai yang dikirimkan pada halaman sebelumnya dapat dilakukan menggunakan ModalRoute.
+
+    <img src = img6\TP2-2.png>
+  <br>
+
+3. Pada hasil akhir dari aplikasi belanja yang telah anda selesaikan, tambahkan atribut foto produk, stok, dan rating. Ubahlah tampilan menjadi GridView seperti di aplikasi marketplace pada umumnya.
+  <img src = img6\TP2-3.png>
+  <img src = img6\TP2-4.png>
+
+4. Implementasikan Hero widget pada aplikasi belanja.
+
+- *HomePage*
+  ```
+  import 'package:belanja/models/item.dart';
+  import 'package:flutter/material.dart';
+
+  class HomePage extends StatelessWidget {
+    final List<Item> items = [
+      // Item List
+    ];
+
+    @override
+    Widget build(BuildContext context) {
+      ...
+                      Hero(
+                      tag: 'hero-${items[index].name}', // Tag unik untuk Hero
+                      child: Container(
+                        height: 100, // Tetapkan tinggi tetap untuk gambar
+                        width: double.infinity,
+                        child: Image.asset(
+                          items[index].imageUrl,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+      ...
+    }
+  }
+  ```
+
+- *ItemPage*
+  ```
+  import 'package:belanja/models/item.dart';
+  import 'package:flutter/material.dart';
+
+  class ItemPage extends StatelessWidget {
+    @override
+    Widget build(BuildContext context) {
+      ...
+              Hero(
+                tag: 'hero-${item.name}', // Tag yang sama untuk animasi Hero
+                child: Image.asset(
+                  item.imageUrl,
+                  width: double.infinity,
+                  height: 250,
+                  fit: BoxFit.cover,
+                ),
+              ),
+      ...
+    }
+  }
+  ```
+  <br> 
+  <video src="img6/hero.mp4" width="640" height="480" controls></video>
+
+5. Sesuaikan dan modifikasi tampilan sehingga menjadi aplikasi yang menarik. Selain itu, pecah widget menjadi kode yang lebih kecil. Tambahkan Nama dan NIM di footer aplikasi belanja Anda.
+- *HomePage*
+  ```
+  import 'package:flutter/material.dart';
+  import 'package:belanja/models/item.dart';
+
+  class HomePage extends StatelessWidget {
+    final List<Item> items = [
+      Item(
+        name: 'Gula',
+        price: 13000,
+        imageUrl: 'images/gula.webp',
+        stock: 50,
+        rating: 4.5,
+      ),
+      Item(
+        name: 'Tepung Terigu',
+        price: 8000,
+        imageUrl: 'images/tepung_terigu.jpg',
+        stock: 30,
+        rating: 4.0,
+      ),
+      Item(
+        name: 'Garam',
+        price: 4000,
+        imageUrl: 'images/garam.jpg',
+        stock: 100,
+        rating: 4.8,
+      ),
+      Item(
+        name: 'Kentang',
+        price: 16000,
+        imageUrl: 'images/kentang.webp',
+        stock: 50,
+        rating: 4.5,
+      ),
+      Item(
+        name: 'Tomat',
+        price: 12000,
+        imageUrl: 'images/tomat.jpeg',
+        stock: 30,
+        rating: 4.0,
+      ),
+      Item(
+        name: 'Daging Sapi',
+        price: 134000,
+        imageUrl: 'images/daging_sapi.jpg',
+        stock: 100,
+        rating: 4.8,
+      ),
+      Item(
+        name: 'Beras',
+        price: 57000,
+        imageUrl: 'images/beras.jpg',
+        stock: 100,
+        rating: 4.8,
+      ),
+    ];
+
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        appBar: CustomAppBar(),
+        body: Column(
+          children: [
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ItemGrid(items: items),
+              ),
+            ),
+            Footer(),
+          ],
+        ),
+      );
+    }
+  }
+
+  // Custom AppBar dengan gradient background
+  class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+    @override
+    Widget build(BuildContext context) {
+      return AppBar(
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xFF0288D1), Color(0xFF26C6DA)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
+        title: Text(
+          'Jihan Shop',
+          style: TextStyle(color: Colors.white),
+        ),
+      );
+    }
+
+    @override
+    Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  }
+
+  // Grid Widget untuk menampilkan daftar item dengan efek hover pada Card
+  class ItemGrid extends StatelessWidget {
+    final List<Item> items;
+
+    const ItemGrid({required this.items});
+
+    @override
+    Widget build(BuildContext context) {
+      return GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 8.0,
+          mainAxisSpacing: 8.0,
+        ),
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          return ItemCard(item: items[index]);
+        },
+      );
+    }
+  }
+
+  // Widget untuk menampilkan detail setiap item dengan animasi hover
+  class ItemCard extends StatelessWidget {
+    final Item item;
+
+    const ItemCard({required this.item});
+
+    @override
+    Widget build(BuildContext context) {
+      return InkWell(
+        onTap: () {
+          Navigator.pushNamed(context, '/item', arguments: item);
+        },
+        child: Card(
+          margin: EdgeInsets.all(8.0),
+          elevation: 6,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Hero(
+                tag: 'hero-${item.name}',
+                child: Container(
+                  height: 120,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
+                    image: DecorationImage(
+                      image: AssetImage(item.imageUrl),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      item.name,
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 4),
+                    Text(
+                      'Harga: Rp ${item.price.toString().replaceAllMapped(
+                            RegExp(r'(\d)(?=(\d{3})+(?!\d))'),
+                            (Match m) => '${m[1]}.',
+                          )}',
+                      style: TextStyle(color: Colors.green[800]),
+                    ),
+                    Text('Stok: ${item.stock}'),
+                    SizedBox(height: 4),
+                    RatingBar(rating: item.rating),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+  }
+
+  // Widget RatingBar untuk menampilkan bintang dengan warna yang lebih jelas
+  class RatingBar extends StatelessWidget {
+    final double rating;
+
+    const RatingBar({required this.rating});
+
+    @override
+    Widget build(BuildContext context) {
+      return Row(
+        children: List.generate(5, (index) {
+          return Icon(
+            index < rating.floor()
+                ? Icons.star
+                : (index < rating ? Icons.star_half : Icons.star_border),
+            size: 16.0,
+            color: Colors.yellow[700],
+          );
+        }),
+      );
+    }
+  }
+
+  // Footer yang tetap di bawah dengan ikon
+  class Footer extends StatelessWidget {
+    @override
+    Widget build(BuildContext context) {
+      return Container(
+        color: Colors.grey[200],
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.person, size: 18),
+            SizedBox(width: 8),
+            Text(
+              'Jihan Karunia Putri | 2241720031',
+              style: TextStyle(fontSize: 16.0),
+            ),
+          ],
+        ),
+      );
+    }
+  }
+  ```
+
+- *ItemPage*
+  ```
+  import 'package:flutter/material.dart';
+  import 'package:belanja/models/item.dart';
+
+  class ItemPage extends StatelessWidget {
+    @override
+    Widget build(BuildContext context) {
+      final Item item = ModalRoute.of(context)!.settings.arguments as Item;
+
+      return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            item.name,
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Color(0xFF0288D1),
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Hero(
+                  tag: 'hero-${item.name}',
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20.0),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black26,
+                          offset: Offset(0, 4),
+                          blurRadius: 10.0,
+                        ),
+                      ],
+                    ),
+                    clipBehavior: Clip.hardEdge,
+                    child: Image.asset(
+                      item.imageUrl,
+                      width: double.infinity,
+                      height: 250,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 24),
+                Text(
+                  item.name,
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  'Harga: Rp ${item.price.toString().replaceAllMapped(
+                        RegExp(r'(\d)(?=(\d{3})+(?!\d))'),
+                        (Match m) => '${m[1]}.',
+                      )}',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.green[700],
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  'Stok: ${item.stock}',
+                  style: TextStyle(fontSize: 16, color: Colors.grey[700]),
+                ),
+                SizedBox(height: 16),
+                Divider(color: Colors.grey[400], thickness: 1),
+                SizedBox(height: 16),
+                Row(
+                  children: List.generate(5, (index) {
+                    return Icon(
+                      index < item.rating.floor()
+                          ? Icons.star
+                          : (index < item.rating
+                              ? Icons.star_half
+                              : Icons.star_border),
+                      color: Colors.yellow[700],
+                      size: 24,
+                    );
+                  }),
+                ),
+                SizedBox(height: 24),
+                Text(
+                  "Deskripsi Item",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  "Ini adalah deskripsi singkat tentang ${item.name}. Produk ini memiliki kualitas yang sangat baik dengan rating ${item.rating} dari 5 bintang. Stok masih tersedia sebanyak ${item.stock} unit.",
+                  style: TextStyle(fontSize: 16, height: 1.5),
+                ),
+                SizedBox(height: 32),
+                Center(
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      // Aksi pembelian
+                    },
+                    icon: Icon(Icons.shopping_cart),
+                    label: Text(
+                      'Beli Sekarang',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 32.0,
+                        vertical: 12.0,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      backgroundColor: Color(0xFF0288D1),
+                      foregroundColor: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+  }
+  ```
+
+  <br>
+  <img src = img6\TP2-5.png>
+  <img src = img6\TP2-6.png>
