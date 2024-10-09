@@ -220,6 +220,7 @@ class MyApp extends StatelessWidget {
       ),
     );
 ```
+
 <img src = img6\Prak3.png>
 
 ### Praktikum 4: Implementasi image section
@@ -260,6 +261,7 @@ Mengatur semua elemen dalam ListView, bukan Column.
       ),
     );
 ```
+
 <img src = img6\Prak4-3.png>
 
 ### Implementasi "basic_layout_flutter"
