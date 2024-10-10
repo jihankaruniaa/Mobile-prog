@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:belanja/models/item.dart';
 
 class ItemPage extends StatelessWidget {
+  final Item item;
+
+  // Tambahkan konstruktor untuk menerima item
+  const ItemPage({Key? key, required this.item}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    final Item item = ModalRoute.of(context)!.settings.arguments as Item;
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -14,6 +17,7 @@ class ItemPage extends StatelessWidget {
         ),
         backgroundColor: Color(0xFF0288D1),
       ),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -37,7 +41,7 @@ class ItemPage extends StatelessWidget {
                   child: Image.asset(
                     item.imageUrl,
                     width: double.infinity,
-                    height: 250,
+                    height: 400,
                     fit: BoxFit.cover,
                   ),
                 ),

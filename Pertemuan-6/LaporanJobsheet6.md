@@ -962,3 +962,280 @@ class HomePage extends StatelessWidget {
   <br>
   <img src = img6\TP2-5.png>
   <img src = img6\TP2-6.png>
+
+6. Modifikasi menggunakan plugin **go_router**
+- *HomePage*
+  ```
+  import 'package:flutter/material.dart';
+  import 'package:belanja/models/item.dart';
+  import 'package:go_router/go_router.dart';
+
+  class HomePage extends StatelessWidget {
+    final List<Item> items = [
+      // Item List
+    ];
+
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'Jihan Shop',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+          backgroundColor: Colors.blue,
+        ),
+        backgroundColor: Colors.white,
+        body: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, // Jumlah kolom dalam grid
+            childAspectRatio: 0.75, // Rasio aspek untuk item grid
+            crossAxisSpacing: 10.0, // Jarak antar kolom
+            mainAxisSpacing: 10.0, // Jarak antar baris
+          ),
+          padding: const EdgeInsets.all(10.0),
+          itemCount: items.length,
+          itemBuilder: (context, index) {
+            final item = items[index];
+            return GestureDetector(
+              onTap: () {
+                // Navigasi ke ItemPage dan kirim item sebagai parameter
+                context.go('/item', extra: item);
+              },
+              child: Card(
+                elevation: 4,
+                color: Colors.grey[50],
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(0.5),
+                          child: Image.asset(
+                            item.imageUrl,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 8),
+                      Text(
+                        item.name,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 4),
+                      Text(
+                        'Harga: Rp ${item.price.toString().replaceAllMapped(
+                          RegExp(r'(\d)(?=(\d{3})+(?!\d))'),
+                          (Match m) => '${m[1]}.',
+                        )}',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.green[700],
+                        ),
+                      ),
+                      SizedBox(height: 4),
+                      Text('Stok: ${item.stock} unit'),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+      );
+    }
+  }
+  ```
+  <br>
+
+- *ItemPage*
+  ```
+  import 'package:flutter/material.dart';
+  import 'package:belanja/models/item.dart';
+
+  class ItemPage extends StatelessWidget {
+    final Item item;
+
+    // Tambahkan konstruktor untuk menerima item
+    const ItemPage({Key? key, required this.item}) : super(key: key);
+
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            item.name,
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Color(0xFF0288D1),
+        ),
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Hero(
+                  tag: 'hero-${item.name}',
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20.0),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black26,
+                          offset: Offset(0, 4),
+                          blurRadius: 10.0,
+                        ),
+                      ],
+                    ),
+                    clipBehavior: Clip.hardEdge,
+                    child: Image.asset(
+                      item.imageUrl,
+                      width: double.infinity,
+                      height: 400,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 24),
+                Text(
+                  item.name,
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  'Harga: Rp ${item.price.toString().replaceAllMapped(
+                        RegExp(r'(\d)(?=(\d{3})+(?!\d))'),
+                        (Match m) => '${m[1]}.',
+                      )}',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.green[700],
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  'Stok: ${item.stock}',
+                  style: TextStyle(fontSize: 16, color: Colors.grey[700]),
+                ),
+                SizedBox(height: 16),
+                Divider(color: Colors.grey[400], thickness: 1),
+                SizedBox(height: 16),
+                Row(
+                  children: List.generate(5, (index) {
+                    return Icon(
+                      index < item.rating.floor()
+                          ? Icons.star
+                          : (index < item.rating
+                              ? Icons.star_half
+                              : Icons.star_border),
+                      color: Colors.yellow[700],
+                      size: 24,
+                    );
+                  }),
+                ),
+                SizedBox(height: 24),
+                Text(
+                  "Deskripsi Item",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  "Ini adalah deskripsi singkat tentang ${item.name}. Produk ini memiliki kualitas yang sangat baik dengan rating ${item.rating} dari 5 bintang. Stok masih tersedia sebanyak ${item.stock} unit.",
+                  style: TextStyle(fontSize: 16, height: 1.5),
+                ),
+                SizedBox(height: 32),
+                Center(
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      // Aksi pembelian
+                    },
+                    icon: Icon(Icons.shopping_cart),
+                    label: Text(
+                      'Beli Sekarang',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 32.0,
+                        vertical: 12.0,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      backgroundColor: Color(0xFF0288D1),
+                      foregroundColor: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+  }
+  ```
+  <br>
+
+- *Main*
+  ```
+  import 'package:belanja/pages/item_page.dart';
+  import 'package:belanja/models/item.dart';
+  import 'package:flutter/material.dart';
+  import 'package:go_router/go_router.dart';
+  import 'pages/home_page.dart';
+
+  void main() {
+    runApp(MyApp());
+  }
+
+  class MyApp extends StatelessWidget {
+    @override
+    Widget build(BuildContext context) {
+      final GoRouter _router = GoRouter(
+        initialLocation: '/',
+        routes: [
+          GoRoute(
+            path: '/',
+            builder: (context, state) => HomePage(),
+          ),
+          GoRoute(
+            path: '/item',
+            builder: (context, state) {
+              final item = state.extra as Item; // Mengambil data item
+              return ItemPage(item: item); // Meneruskan item ke ItemPage
+            },
+          ),
+        ],
+      );
+
+      return MaterialApp.router(
+        title: 'Belanja App',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        routerConfig: _router, // Menghubungkan konfigurasi router go_router
+      );
+    }
+  }
+  ```
+
+  <br>
+  <img src = img6\TP2-7.png>
+  <img src = img6\TP2-8.png>
