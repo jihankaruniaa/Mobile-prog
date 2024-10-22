@@ -5,7 +5,7 @@ class ItemPage extends StatelessWidget {
   final Item item;
 
   // Tambahkan konstruktor untuk menerima item
-  const ItemPage({Key? key, required this.item}) : super(key: key);
+  const ItemPage({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +13,9 @@ class ItemPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           item.name,
-          style: TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white),
         ),
-        backgroundColor: Color(0xFF0288D1),
+        backgroundColor: const Color(0xFF0288D1),
       ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -29,7 +29,7 @@ class ItemPage extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20.0),
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         color: Colors.black26,
                         offset: Offset(0, 4),
@@ -46,15 +46,15 @@ class ItemPage extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
               Text(
                 item.name,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Text(
                 'Harga: Rp ${item.price.toString().replaceAllMapped(
                       RegExp(r'(\d)(?=(\d{3})+(?!\d))'),
@@ -66,14 +66,14 @@ class ItemPage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Text(
                 'Stok: ${item.stock}',
                 style: TextStyle(fontSize: 16, color: Colors.grey[700]),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Divider(color: Colors.grey[400], thickness: 1),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Row(
                 children: List.generate(5, (index) {
                   return Icon(
@@ -87,39 +87,39 @@ class ItemPage extends StatelessWidget {
                   );
                 }),
               ),
-              SizedBox(height: 24),
-              Text(
+              const SizedBox(height: 24),
+              const Text(
                 "Deskripsi Item",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Text(
                 "Ini adalah deskripsi singkat tentang ${item.name}. Produk ini memiliki kualitas yang sangat baik dengan rating ${item.rating} dari 5 bintang. Stok masih tersedia sebanyak ${item.stock} unit.",
-                style: TextStyle(fontSize: 16, height: 1.5),
+                style: const TextStyle(fontSize: 16, height: 1.5),
               ),
-              SizedBox(height: 32),
+              const SizedBox(height: 32),
               Center(
                 child: ElevatedButton.icon(
                   onPressed: () {
                     // Aksi pembelian
                   },
-                  icon: Icon(Icons.shopping_cart),
-                  label: Text(
+                  icon: const Icon(Icons.shopping_cart),
+                  label: const Text(
                     'Beli Sekarang',
                     style: TextStyle(fontSize: 18),
                   ),
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       horizontal: 32.0,
                       vertical: 12.0,
                     ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0),
                     ),
-                    backgroundColor: Color(0xFF0288D1),
+                    backgroundColor: const Color(0xFF0288D1),
                     foregroundColor: Colors.white,
                   ),
                 ),

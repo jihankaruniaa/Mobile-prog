@@ -9,9 +9,11 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    final GoRouter _router = GoRouter(
+    final GoRouter router = GoRouter(
       initialLocation: '/',
       routes: [
         GoRoute(
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      routerConfig: _router, // Menghubungkan konfigurasi router go_router
+      routerConfig: router, // Menghubungkan konfigurasi router go_router
     );
   }
 }

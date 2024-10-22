@@ -55,11 +55,13 @@ class HomePage extends StatelessWidget {
     ),
   ];
 
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Jihan Shop',
           style: TextStyle(
             color: Colors.white,
@@ -69,7 +71,7 @@ class HomePage extends StatelessWidget {
       ),
       backgroundColor: Colors.white,
       body: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2, // Jumlah kolom dalam grid
           childAspectRatio: 0.75, // Rasio aspek untuk item grid
           crossAxisSpacing: 10.0, // Jarak antar kolom
@@ -101,15 +103,15 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(
                       item.name,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 4),
+                    const SizedBox(height: 4),
                     Text(
                       'Harga: Rp ${item.price.toString().replaceAllMapped(
                         RegExp(r'(\d)(?=(\d{3})+(?!\d))'),
@@ -120,7 +122,7 @@ class HomePage extends StatelessWidget {
                         color: Colors.green[700],
                       ),
                     ),
-                    SizedBox(height: 4),
+                    const SizedBox(height: 4),
                     Text('Stok: ${item.stock} unit'),
                   ],
                 ),
