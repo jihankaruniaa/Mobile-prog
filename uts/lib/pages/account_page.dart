@@ -6,10 +6,10 @@ class AccountPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 240, 241, 246),
       body: ListView(
-        padding: EdgeInsets.only(top: 24.0),
+        padding: EdgeInsets.only(top: 50.0),
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(),
+            padding: const EdgeInsets.only(top: 0.1, bottom: 0.1),
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(
@@ -78,7 +78,7 @@ class AccountPage extends StatelessWidget {
           ),
           SizedBox(height: 15),
           Padding(
-            padding: const EdgeInsets.symmetric(),
+            padding: const EdgeInsets.only(top: 0.1, bottom: 0),
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(
@@ -112,7 +112,7 @@ class AccountPage extends StatelessWidget {
           ),
           SizedBox(height: 15),
           Padding(
-            padding: const EdgeInsets.symmetric(),
+            padding: const EdgeInsets.only(top: 0.1, bottom: 0),
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(
@@ -146,7 +146,7 @@ class AccountPage extends StatelessWidget {
           ),
           SizedBox(height: 15),
           Padding(
-            padding: const EdgeInsets.symmetric(),
+            padding: const EdgeInsets.only(top: 0.1, bottom: 0),
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(
@@ -176,6 +176,25 @@ class AccountPage extends StatelessWidget {
             ),
           ),
           SizedBox(height: 15),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 5.0),
+            child: Container(
+              width: double.infinity,
+              color: Colors.white,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  'Logout',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 205, 34, 51),
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

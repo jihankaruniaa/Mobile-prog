@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
-              expandedHeight: 80.0,
+              expandedHeight: 90.0,
               floating: false,
               pinned: false,
               flexibleSpace: FlexibleSpaceBar(
@@ -113,12 +113,11 @@ class HomePage extends StatelessWidget {
                             ],
                           ),
                         ),
-                        SizedBox(height: 16),
                         GridView.count(
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),
                           crossAxisCount: 4,
-                          crossAxisSpacing: 10,
+                          crossAxisSpacing: 5,
                           mainAxisSpacing: 2,
                           children: [
                             _buildServiceIcon(
@@ -245,13 +244,19 @@ Widget _buildQuickActionButton(IconData icon, String label) {
 
 Widget _buildServiceIcon(IconData icon, String label) {
   return Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,
     children: [
       CircleAvatar(
-        backgroundColor: Color.fromARGB(255, 205, 34, 51),
+        backgroundColor: const Color.fromARGB(255, 205, 34, 51),
         child: Icon(icon, color: Colors.white),
       ),
-      SizedBox(height: 8),
-      Text(label, style: TextStyle(fontSize: 12)),
+      const SizedBox(height: 8),
+      Text(
+        label,
+        style: const TextStyle(fontSize: 12),
+        textAlign: TextAlign.center,
+      ),
     ],
   );
 }

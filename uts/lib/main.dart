@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-
 import 'package:uts/widgets/bottom_navigation.dart';
 
 void main() {
@@ -43,7 +42,6 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: Image.asset(
           'images/logo_linkaja.png',
-          //fit: BoxFit.cover,
           width: 100,
           height: 100,
         ),
@@ -55,12 +53,6 @@ class _SplashScreenState extends State<SplashScreen> {
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'LinkAja',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
-      home: BottomNavigation(),
-    );
+    return BottomNavigation();
   }
 }
