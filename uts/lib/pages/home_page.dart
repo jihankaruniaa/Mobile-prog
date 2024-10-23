@@ -5,130 +5,146 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            expandedHeight: 80.0,
-            floating: false,
-            pinned: false,
-            flexibleSpace: FlexibleSpaceBar(
-              background: Padding(
-                padding: const EdgeInsets.only(top: 20.0, left: 16, right: 16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Image.asset(
-                      'images/logo_linkaja.png',
-                      width: 40,
-                      height: 40,
-                    ),
-                    Row(
-                      children: [
-                        _buildIconContainer(Icons.favorite_outline, () {}),
-                        SizedBox(width: 10),
-                        _buildIconContainer(Icons.support_agent, () {}),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            backgroundColor: Colors.transparent,
-            elevation: 0,
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color.fromARGB(255, 240, 241, 246),
+              Color.fromARGB(255, 255, 255, 255),
+            ],
           ),
-          SliverList(
-            delegate: SliverChildListDelegate(
-              [
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
+        ),
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              expandedHeight: 80.0,
+              floating: false,
+              pinned: false,
+              flexibleSpace: FlexibleSpaceBar(
+                background: Padding(
+                  padding:
+                      const EdgeInsets.only(top: 20.0, left: 16, right: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        padding: EdgeInsets.all(16.0),
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 205, 34, 51),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Hi, JIHAN KARUNIA PUTRI",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                            SizedBox(height: 16),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                _buildBalanceCard("Your Balance",
-                                    "Rp *********", Icons.arrow_circle_right),
-                                SizedBox(width: 16),
-                                _buildBalanceCard("Bonus Balance", "Rp 0",
-                                    Icons.arrow_circle_right,
-                                    isBonus: true),
-                              ],
-                            ),
-                          ],
-                        ),
+                      Image.asset(
+                        'images/logo_linkaja.png',
+                        width: 40,
+                        height: 40,
                       ),
-                      SizedBox(height: 16),
-                      Container(
-                        padding: EdgeInsets.all(16.0),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(8),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black12,
-                              blurRadius: 3,
-                              offset: Offset(0, 1),
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            _buildQuickActionButton(Icons.add, "TopUp"),
-                            _buildQuickActionButton(Icons.remove, "CashOut"),
-                            _buildQuickActionButton(Icons.send, "Send Money"),
-                            _buildQuickActionButton(
-                                Icons.widgets_outlined, "See All"),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 16),
-                      GridView.count(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        crossAxisCount: 4,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 2,
+                      Row(
                         children: [
-                          _buildServiceIcon(Icons.phone_android, "Pulsa/Data"),
-                          _buildServiceIcon(Icons.flash_on, "Electricity"),
-                          _buildServiceIcon(Icons.tv, "Cable TV & Internet"),
-                          _buildServiceIcon(Icons.credit_card, "Cardless"),
-                          _buildServiceIcon(Icons.mosque, "Masjid"),
-                          _buildServiceIcon(Icons.volunteer_activism, "Infaq"),
-                          _buildServiceIcon(
-                              Icons.favorite_border, "Other Donations"),
-                          _buildServiceIcon(Icons.more_horiz, "More"),
+                          _buildIconContainer(Icons.favorite_outline, () {}),
+                          SizedBox(width: 10),
+                          _buildIconContainer(Icons.support_agent, () {}),
                         ],
                       ),
-                      _buildSwipeableBanner(),
-                      _buildStyledBannerAd(),
-                      _buildStyledBannerAd2(),
                     ],
                   ),
                 ),
-              ],
+              ),
+              backgroundColor: Colors.transparent,
+              elevation: 0,
             ),
-          ),
-        ],
+            SliverList(
+              delegate: SliverChildListDelegate(
+                [
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(16.0),
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 205, 34, 51),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Hi, JIHAN KARUNIA PUTRI",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              SizedBox(height: 16),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  _buildBalanceCard("Your Balance",
+                                      "Rp *********", Icons.arrow_circle_right),
+                                  SizedBox(width: 16),
+                                  _buildBalanceCard("Bonus Balance", "Rp 0",
+                                      Icons.arrow_circle_right,
+                                      isBonus: true),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 16),
+                        Container(
+                          padding: EdgeInsets.all(16.0),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                blurRadius: 3,
+                                offset: Offset(0, 1),
+                              ),
+                            ],
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              _buildQuickActionButton(Icons.add, "TopUp"),
+                              _buildQuickActionButton(
+                                  Icons.account_balance_wallet, "CashOut"),
+                              _buildQuickActionButton(Icons.send, "Send Money"),
+                              _buildQuickActionButton(
+                                  Icons.widgets_outlined, "See All"),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 16),
+                        GridView.count(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          crossAxisCount: 4,
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 2,
+                          children: [
+                            _buildServiceIcon(
+                                Icons.phone_android, "Pulsa/Data"),
+                            _buildServiceIcon(Icons.flash_on, "Electricity"),
+                            _buildServiceIcon(Icons.tv, "Cable TV & Internet"),
+                            _buildServiceIcon(Icons.credit_card, "Cardless"),
+                            _buildServiceIcon(Icons.mosque, "Masjid"),
+                            _buildServiceIcon(
+                                Icons.volunteer_activism, "Infaq"),
+                            _buildServiceIcon(
+                                Icons.favorite_border, "Other Donations"),
+                            _buildServiceIcon(Icons.more_horiz, "More"),
+                          ],
+                        ),
+                        _buildSwipeableBanner(),
+                        _buildStyledBannerAd(),
+                        _buildStyledBannerAd2(),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -42,10 +42,10 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: Color.fromARGB(255, 240, 241, 246),
       body: Center(
         child: Image.asset(
-          'images/splash.jpg',
+          'images/logo_linkaja.png',
           //fit: BoxFit.cover,
-          width: double.infinity,
-          height: double.infinity,
+          width: 100,
+          height: 100,
         ),
       ),
     );

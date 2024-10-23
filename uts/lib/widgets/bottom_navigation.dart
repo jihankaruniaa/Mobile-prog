@@ -46,7 +46,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
             _buildBottomNavigationBarItem(0, Icons.home_rounded, 'Home'),
             _buildBottomNavigationBarItem(1, Icons.history, 'History'),
             _buildPayButton(),
-            _buildBottomNavigationBarItem(3, Icons.inbox, 'Inbox'),
+            _buildBottomNavigationBarItem(3, Icons.mail_outline, 'Inbox'),
             _buildBottomNavigationBarItem(4, Icons.person, 'Account'),
           ],
         ),
@@ -55,16 +55,55 @@ class _BottomNavigationState extends State<BottomNavigation> {
   }
 
   BottomNavigationBarItem _buildBottomNavigationBarItem(
-      int index, IconData icon, String label) {
+    int index, IconData icon, String label) {
     return BottomNavigationBarItem(
       icon: InkWell(
         onTap: () => _onTap(index),
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
-        child: Column(
+        child: Stack(
           children: [
-            Icon(icon),
-            Text(label, style: TextStyle(fontSize: 10)),
+            Column(
+              children: [
+                Icon(icon),
+                Text(label, style: TextStyle(fontSize: 10)),
+              ],
+            ),
+            if (index == 3)
+              Positioned(
+                right: 0,
+                top: 0,
+                child: Container(
+                  width: 12,
+                  height: 12,
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 205, 34, 51),
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 1.5,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.white.withOpacity(1),
+                        spreadRadius: 1,
+                        blurRadius: 1,
+                        offset: Offset(0, 1),
+                      ),
+                    ],
+                  ),
+                  child: Center(
+                    child: Text(
+                      '',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 8,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+              ),
           ],
         ),
       ),
