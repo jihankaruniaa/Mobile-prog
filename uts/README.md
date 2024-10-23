@@ -1,16 +1,7 @@
-# uts
+### Jihan Karunia Putri <br> 2241720031 / 13/ TI-3B
 
-A new Flutter project.
+# UTS Pemrograman Mobile
 
-## Getting Started
+**Berikut hasilnya :**
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ <a href="https://drive.google.com/file/d/162sUYmvq4PrskS33qE7-Rmk431K6ve_z/view?usp=sharing">13_Jihan Karunia_UTS Mobile</a>
