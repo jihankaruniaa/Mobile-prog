@@ -79,7 +79,7 @@ class HomePage extends StatelessWidget {
                                   _buildBalanceCard("Your Balance",
                                       "Rp *********", Icons.arrow_circle_right),
                                   SizedBox(width: 16),
-                                  _buildBalanceCard("Bonus Balance", "Rp 0",
+                                  _buildBalanceCard("Bonus Balance", " 0",
                                       Icons.arrow_circle_right,
                                       isBonus: true),
                                 ],
@@ -194,16 +194,36 @@ Widget _buildBalanceCard(String label, String amount, IconData icon,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(label, style: TextStyle(color: Colors.black)),
-              Text(
-                amount,
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16),
+              Row(
+                children: [
+                  if (isBonus)
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.access_time_filled,
+                          color: const Color.fromARGB(255, 243, 192, 63),
+                          size: 20,
+                        ),
+                        SizedBox(width: 4),
+                      ],
+                    ),
+                  Text(
+                    amount,
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16),
+                  ),
+                ],
               ),
             ],
           ),
-          Icon(icon, color: isBonus ? Colors.yellow : Colors.red),
+          Icon(
+            icon,
+            color: isBonus
+                ? Color.fromARGB(255, 205, 34, 51)
+                : Color.fromARGB(255, 205, 34, 51),
+          ),
         ],
       ),
     ),
