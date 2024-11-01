@@ -365,4 +365,4 @@ void main() {
 ```
 
 #### Hasil pada deploy pada device (Smartphone)
-  <video src="img/photo_filter.mp4" width="640" height="480" controls></video>
+ <a href="https://drive.google.com/file/d/1lpC8S-S5PQzJ9G7Um1V9XDO04NDf4csa/view?usp=sharing">Hasil photo filter carousel</a>
