@@ -26,6 +26,7 @@ Pada langkah 6, variabel plan digunakan untuk menyimpan data dari objek Plan yan
 Plan dibuat sebagai **konstanta** `(const Plan())` untuk efisiensi dan keamanan data. Dengan menjadikannya konstanta, Dart hanya mengalokasikan memori sekali, sehingga lebih hemat. Selain itu, konstanta mencegah perubahan tidak sengaja pada nilai awal plan, menjaga konsistensi data selama aplikasi berjalan. Ini juga mendukung konsep immutability yang meningkatkan performa aplikasi dengan memungkinkan Dart melakukan optimisasi lebih lanjut.<br><br>
 
 4. Lakukan capture hasil dari Langkah 9 berupa GIF, kemudian jelaskan apa yang telah Anda buat!
+
     <img src="img/Praktikum1_langkah9.gif" width="300px">
 - Penjelasan:
 Dari langkah 1 hingga 9 dalam praktikum ini, sebuah aplikasi to-do sederhana bernama **Master Plan** telah dibangun menggunakan Flutter. Pada langkah pertama, proyek baru dibuat dan struktur folder diatur untuk menjaga keteraturan kode. Selanjutnya, di langkah 2 dan 3, dua model data, yaitu `Task` dan `Plan`, dibuat untuk menyimpan informasi tentang tugas dan rencana, masing-masing dengan atribut yang relevan. Di langkah 4, proses impor disederhanakan dengan membuat file `data_layer.dart` yang mengekspor kedua model tersebut. Langkah 5 berfokus pada menyiapkan entry point aplikasi di `main.dart`, di mana aplikasi dideklarasikan dengan tema dan layar utama. Kemudian, di langkah 6, kelas `PlanScreen` dibuat menggunakan StatefulWidget, yang menjadi layar utama aplikasi, dan di langkah 7, metode `_buildAddTaskButton()` ditambahkan untuk memungkinkan pengguna menambahkan tugas baru dengan menekan tombol. Pada langkah 8, widget `ListView.builder` dibuat untuk menampilkan daftar tugas secara dinamis, dan di langkah 9, widget `_buildTaskTile` dikembangkan untuk menampilkan setiap tugas dengan Checkbox untuk menandai status tugas dan TextFormField untuk mengedit deskripsi tugas.<br><br>
@@ -55,3 +56,21 @@ Pada langkah 3, terdapat penambahan dua method dalam model kelas `Plan`, yaitu `
 - Penjelasan:<br>
 Praktikum 2 bertujuan untuk mengelola data dengan menggunakan `InheritedWidget` dan `InheritedNotifier` di dalam aplikasi Flutter. Dalam praktikum ini, sebuah class `PlanProvider` diciptakan untuk mengelola state dan data dari todo list secara terpisah dari UI. Dengan menggunakan `ValueNotifier`, class ini memungkinkan notifikasi untuk memberitahukan widget yang bergantung pada data ketika ada perubahan. Dua method baru ditambahkan dalam model `Plan`, yaitu `completedCount` untuk menghitung jumlah tugas yang telah selesai dan `completenessMessage` untuk memberikan informasi mengenai progres tugas yang ada. Hal ini bertujuan agar tampilan dapat mencerminkan data yang dikelola dengan lebih baik dan terpisah dari logika aplikasi.
 <br><br>
+
+# Tugas Praktikum 3: State di Multiple Screens
+
+2. Berdasarkan Praktikum 3 yang telah Anda lakukan, jelaskan maksud dari gambar diagram berikut ini!
+
+    <img src="img/Soal.png" width="400px">
+
+- Jawab:<br>
+Diagram tersebut menggambarkan transisi dari aplikasi dengan satu layar menjadi aplikasi multi-layar di Flutter. Pada sisi kiri diagram, terlihat struktur awal aplikasi dengan satu layar, di mana `PlanCreatorScreen` mengelola daftar tugas menggunakan susunan kolom. Namun, pada struktur awal ini, semua tugas dikelola dalam satu layar, dan manajemen state (keadaan) hanya terbatas pada satu layar tersebut.<br>
+Pada sisi kanan diagram, terlihat struktur yang telah diperbarui dengan menambahkan layar kedua (`PlanScreen`). Layar ini diakses melalui `Navigator.push`, sehingga aplikasi dapat menangani beberapa daftar rencana (plans). Penambahan `SafeArea`, `Scaffold`, dan manajemen state yang lebih baik melalui `PlanProvider` memungkinkan setiap rencana ditampilkan, diedit, dan diperbarui secara mandiri.<br>
+Dengan menerapkan prinsip **Lift State Up**, state untuk rencana dikelola pada level yang lebih tinggi di dalam widget tree, sehingga beberapa layar dapat berbagi dan mengakses data yang sama tanpa duplikasi atau kesalahan manajemen state.
+
+3. Lakukan capture hasil dari Langkah 14 berupa GIF, kemudian jelaskan apa yang telah Anda buat!
+
+    <img src="img/Praktikum3.gif" width="400px">
+
+- Penjelasan:<br>
+masater_plan ini memungkinkan pengguna untuk membuat dan mengelola beberapa daftar rencana (plans) di berbagai layar. Pada tampilan utama `PlanCreatorScreen`, pengguna dapat menambahkan rencana baru melalui kolom input, dan rencana tersebut akan muncul dalam daftar. Jika pengguna memilih salah satu rencana, aplikasi akan berpindah ke layar `PlanScreen` yang menampilkan detail rencana beserta tugas-tugasnya. Setiap tugas dapat ditandai sebagai selesai atau diubah deskripsinya.
