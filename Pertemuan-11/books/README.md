@@ -172,7 +172,7 @@ Panggil method handleError() tersebut di ElevatedButton, lalu run. Apa hasilnya?
 - Hasil:<br>
 <img src="img/Soal10.jpg" width="300px"> 
 
-    Ketika tombol `ElevatedButton` ditekan, metode `handleError()` akan dipanggil. Kode ini mencoba menjalankan `returnError()`, yang menunggu selama 2 detik sebelum melempar sebuah Exception dengan pesan "Something terrible happened!". Dalam `handleError()`, blok try-catch menangkap error tersebut, lalu memperbarui variabel result dengan pesan error dan memanggil `setState()` untuk memperbarui UI dengan pesan error yang muncul di layar. Setelah itu, blok finally akan mencetak "Complete" di konsol.
+  Ketika tombol `ElevatedButton` ditekan, metode `handleError()` akan dipanggil. Kode ini mencoba menjalankan `returnError()`, yang menunggu selama 2 detik sebelum melempar sebuah Exception dengan pesan "Something terrible happened!". Dalam `handleError()`, blok try-catch menangkap error tersebut, lalu memperbarui variabel result dengan pesan error dan memanggil `setState()` untuk memperbarui UI dengan pesan error yang muncul di layar. Setelah itu, blok finally akan mencetak "Complete" di konsol.
 
 - Perbedaan:<br>
 Perbedaan antara kode langkah 1 dan 4 terletak pada bagaimana error dikelola. Pada langkah 1, metode `returnError()` hanya mendefinisikan situasi di mana error akan terjadi dengan menunggu selama 2 detik sebelum melempar Exception, tanpa adanya penanganan error. Sebaliknya, langkah 4 memperkenalkan metode `handleError()` yang secara aktif menangani error yang mungkin muncul dari pemanggilan `returnError()`. Metode ini menggunakan blok try-catch-finally untuk mencoba menjalankan `returnError()`, menangkap error di blok catch, dan memperbarui antarmuka pengguna dengan pesan error. Selain itu, blok finally memastikan bahwa log “Complete” dicetak di konsol, terlepas dari apakah error terjadi. Dengan demikian, langkah 1 berfokus pada pemicu error, sementara langkah 4 berfokus pada penanganan dan penyampaian pesan error tersebut.
@@ -226,8 +226,8 @@ Future<Position> getPosition() async {
 <img src="img/Soal11.jpg" width="300px"> 
 
 #### Soal 12
-- Apakah Anda mendapatkan koordinat GPS ketika run di browser? Mengapa demikian?<br>
-Jawab:<br>
+Apakah Anda mendapatkan koordinat GPS ketika run di browser? Mengapa demikian?<br>
+- Jawab:<br>
 Tidak sepenuhnya, hanya latitude yang berhasil ditampilkan, sedangkan longitude mengalami kesalahan tampilan akibat penggunaan string literal yang kurang tepat. Masalah ini terjadi karena bagian longitude seharusnya ditulis menggunakan interpolasi string yang benar di kode. Perlu menggunakan ${} agar Flutter menampilkan nilai dari variabel tersebut dengan benar.
 
   <img src="img/Soal12_browser.jpg" width="300px"> 
