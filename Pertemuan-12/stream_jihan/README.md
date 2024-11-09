@@ -94,3 +94,10 @@ Langkah 10: Method `addRandomNumber()` menambahkan angka acak ke dalam stream. P
 2. Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
 
     <img src="images/Soal6.gif" width="700px">
+
+#### Soal 7
+Jelaskan maksud kode langkah 13 sampai 15 tersebut!
+- Jawab:<br>
+**Langkah 13**: Method `addError()` ditambahkan ke dalam stream.dart untuk memasukkan error ke dalam aliran (stream) dengan menggunakan `controller.sink.addError('error')`. Dengan menambahkan error ini, dapat diuji bagaimana aplikasi merespons error yang terjadi pada stream.<br>
+**Langkah 14**: Dalam main.dart, method onError ditambahkan ke listener di `initState()` untuk menangani error yang mungkin diterima dari stream. Saat error terjadi, onError akan dipanggil, dan setState memperbarui lastNumber menjadi -1. Hal ini memungkinkan UI untuk menampilkan indikator khusus saat error terjadi dalam aliran.<br>
+**Langkah 15**: Method `addRandomNumber()` diedit untuk mengganti fungsinya dari mengirim angka acak menjadi memicu error ke dalam stream. Dua baris kode yang menambahkan angka acak dikomentari, dan sebagai gantinya, `numberStream.addError()` dipanggil. Ini mensimulasikan error saat `addRandomNumber()` dijalankan, sehingga dapat diuji bagaimana aplikasi merespons error dalam stream.
