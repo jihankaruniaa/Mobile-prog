@@ -40,8 +40,10 @@ class _StreamHomePage extends State<StreamHomePage> {
   }
 }
 ```
-#### Soal 2
 
+#### Soal 2
+Tambahkan 5 warna lainnya sesuai keinginan Anda pada variabel colors tersebut.
+- Jawab:<br>
 ```dart
 import 'package:flutter/material.dart';
 
@@ -61,3 +63,11 @@ class ColorStream {
 }
 ```
 
+#### Soal 3
+1. Jelaskan fungsi keyword yield* pada kode tersebut!
+- Jawab:<br>
+Keyword `yield*` dalam kode tersebut digunakan untuk meneruskan seluruh aliran data dari `Stream.periodic` ke dalam aliran getColors. Dengan `yield*`, semua elemen yang dihasilkan oleh `Stream.periodic` dapat langsung dikeluarkan oleh getColors tanpa perlu menggunakan yield berulang kali.<br>
+
+2. Apa maksud isi perintah kode tersebut?
+- Jawab:<br>
+Kode tersebut membuat kelas ColorStream yang menyediakan aliran warna secara periodik. Fungsi `getColors()` mengembalikan Stream yang menghasilkan warna baru setiap satu detik dari daftar colors. Dengan menggunakan `Stream.periodic` dan operasi modulus pada indeks, fungsi ini mengeluarkan warna-warna dalam urutan yang berulang dari daftar colors, sehingga setiap detik satu warna baru dipancarkan sesuai urutan dalam daftar.
