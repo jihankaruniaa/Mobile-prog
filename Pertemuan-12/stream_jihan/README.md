@@ -71,3 +71,8 @@ Keyword `yield*` dalam kode tersebut digunakan untuk meneruskan seluruh aliran d
 2. Apa maksud isi perintah kode tersebut?
 - Jawab:<br>
 Kode tersebut membuat kelas ColorStream yang menyediakan aliran warna secara periodik. Fungsi `getColors()` mengembalikan Stream yang menghasilkan warna baru setiap satu detik dari daftar colors. Dengan menggunakan `Stream.periodic` dan operasi modulus pada indeks, fungsi ini mengeluarkan warna-warna dalam urutan yang berulang dari daftar colors, sehingga setiap detik satu warna baru dipancarkan sesuai urutan dalam daftar.
+
+#### Soal 4
+Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+
+<img src="images/Soal4.gif" width="700px">
