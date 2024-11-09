@@ -76,3 +76,9 @@ Kode tersebut membuat kelas ColorStream yang menyediakan aliran warna secara per
 Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
 
 <img src="images/Soal4.gif" width="700px">
+
+#### Soal 5
+Jelaskan perbedaan menggunakan listen dan await for (langkah 9) !
+- Jawab:<br>
+`await for` menunggu setiap elemen dari Stream secara berurutan dalam loop asynchronous dan akan menunggu hingga aliran selesai. Cocok digunakan jika perlu menunggu semua data selesai diterima.<br>
+`listen` menambahkan listener yang langsung menjalankan kode setiap kali elemen baru muncul, tanpa menunggu aliran selesai. Ini lebih sesuai untuk pembaruan real-time, seperti memperbarui UI secara langsung di Flutter.
