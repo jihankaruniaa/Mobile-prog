@@ -82,3 +82,15 @@ Jelaskan perbedaan menggunakan listen dan await for (langkah 9) !
 - Jawab:<br>
 `await for` menunggu setiap elemen dari Stream secara berurutan dalam loop asynchronous dan akan menunggu hingga aliran selesai. Cocok digunakan jika perlu menunggu semua data selesai diterima.<br>
 `listen` menambahkan listener yang langsung menjalankan kode setiap kali elemen baru muncul, tanpa menunggu aliran selesai. Ini lebih sesuai untuk pembaruan real-time, seperti memperbarui UI secara langsung di Flutter.
+
+## Praktikum 2: Stream controllers dan sinks
+
+#### Soal 6
+1. Jelaskan maksud kode langkah 8 dan 10 tersebut!
+- Jawab:<br>
+Langkah 8: Kode ini menginisialisasi aliran (stream) di dalam `initState()`. Objek numberStream dibuat sebagai instans dari NumberStream, dan numberStreamController diambil dari controller dalam numberStream. Selanjutnya, didapatkan aliran dari numberStreamController.stream. Kemudian, listen dipanggil pada aliran tersebut untuk menerima setiap nilai event yang masuk, dan memanggil `setState()` untuk memperbarui nilai lastNumber dengan nilai terbaru yang dikirim melalui stream. Hal ini memungkinkan pembaruan otomatis pada UI setiap kali ada angka baru dalam stream.<br>
+Langkah 10: Method `addRandomNumber()` menambahkan angka acak ke dalam stream. Pertama, sebuah angka acak (myNum) antara 0 hingga 9 dihasilkan menggunakan `Random().nextInt(10)`, lalu angka ini ditambahkan ke Sink dari numberStream dengan memanggil `addNumberToSink(myNum)`. Ini memungkinkan angka acak baru ditambahkan ke aliran, yang kemudian akan memicu pembaruan UI melalui listener yang sudah diatur dalam `initState()`.<br>
+
+2. Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+
+    <img src="images/Soal6.gif" width="700px">
