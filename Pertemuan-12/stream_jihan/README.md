@@ -123,3 +123,14 @@ Inisialisasi transformer di dalam initState dengan `StreamTransformer<int, int>.
   Dengan ini, setiap nilai dari stream diubah dan ditampilkan, serta error dapat ditangani.
 
     <img src="images/Soal8.gif" width="300px">
+
+## Praktikum 4: Subscribe ke stream events
+
+#### Soal 9
+Jelaskan maksud kode langkah 2, 6 dan 8 tersebut!
+- Jawab:<br>
+**Langkah 2**, initState diinisialisasi dengan membuat instance NumberStream, lalu controller diambil dari numberStream, dan stream diambil dari controller. Langganan subscription dibuat untuk mendengarkan setiap nilai dari stream; setiap nilai disimpan di lastNumber dan UI diperbarui melalui setState.<br>
+**Langkah 6**, method dispose mengakhiri subscription untuk menghentikan pendengaran stream dan memanggil super.dispose() untuk membersihkan resource saat widget dihapus, mencegah kebocoran memori.<br> 
+**Langkah 8**, method addRandomNumber menghasilkan angka acak myNum antara 0 hingga 9, lalu memeriksa apakah controller belum ditutup (isClosed). Jika belum, angka tersebut ditambahkan ke stream; jika sudah ditutup, lastNumber diset ke -1 sebagai tanda error atau akhir stream.
+
+  <img src="images/Soal9.jpg" width="300px">
