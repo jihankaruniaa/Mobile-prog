@@ -134,3 +134,18 @@ Jelaskan maksud kode langkah 2, 6 dan 8 tersebut!
 **Langkah 8**, method addRandomNumber menghasilkan angka acak myNum antara 0 hingga 9, lalu memeriksa apakah controller belum ditutup (isClosed). Jika belum, angka tersebut ditambahkan ke stream; jika sudah ditutup, lastNumber diset ke -1 sebagai tanda error atau akhir stream.
 
   <img src="images/Soal9.jpg" width="300px">
+
+
+## Praktikum 5: Multiple stream subscriptions
+
+#### Soal 10
+Jelaskan mengapa error itu bisa terjadi ?
+- Jawab:<br>
+Error `Bad State: Stream has already been listened to` terjadi karena Stream hanya dapat memiliki satu listener jika tidak diubah menjadi broadcast stream. Dalam kode di Langkah 2, ada dua listener yang mencoba mendengarkan stream yang sama: subscription dan subscription2. Ini menyebabkan error karena stream default (seperti yang digunakan di sini) hanya dapat didengarkan satu kali. Untuk mengatasi ini, kita perlu mengubah stream menjadi broadcast agar dapat didengarkan oleh beberapa listener.
+
+#### Soal 11
+Jelaskan mengapa hal itu bisa terjadi ?
+- Jawab:<br>
+Angka ditampilkan dua kali karena stream diubah menjadi broadcast, sehingga memungkinkan dua listener (subscription dan subscription2) mendengarkan stream yang sama. Akibatnya, setiap kali angka baru ditambahkan ke stream, kedua listener ini menerima angka yang sama, sehingga values diperbarui dua kali untuk setiap angka, menampilkan angka dua kali di layar.
+
+  <img src="images/Soal11.gif" width="300px">
